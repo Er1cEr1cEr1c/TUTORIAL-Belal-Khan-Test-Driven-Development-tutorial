@@ -1,12 +1,12 @@
 package com.example.belal_khan_test_driven_development_tutorial
 
+import com.example.belal_khan_test_driven_development_tutorial.data.SpendsDatabase
+import com.example.belal_khan_test_driven_development_tutorial.data.SpendsTrackerDataSource
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.belal_khan_test_driven_development_tutorial.data.SpendsDatabase
-import com.example.belal_khan_test_driven_development_tutorial.data.SpendsTrackerDataSource
 import com.google.common.truth.Truth.assertThat
 import junit.framework.TestCase
 import org.junit.Before
@@ -15,24 +15,20 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import java.util.*
 
-class SpendViewModelTest: TestCase() {
+@RunWith(AndroidJUnit4::class)
+class SpendViewModelTest {
 
-    private lateinit var viewModel:SpendViewModel
+    private lateinit var viewModel: SpendViewModel
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Before
-    override fun setUp() {
-        super.setUp()
+    fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
-        val db = Room
-            .inMemoryDatabaseBuilder(context, SpendsDatabase::class.java)
-            .allowMainThreadQueries()
-            .build()
-
+        val db = Room.inMemoryDatabaseBuilder(context, SpendsDatabase::class.java)
+            .allowMainThreadQueries().build()
         val dataSource = SpendsTrackerDataSource(db.getSpendDao())
-
         viewModel = SpendViewModel(dataSource)
     }
 
@@ -45,5 +41,4 @@ class SpendViewModelTest: TestCase() {
         }
         assertThat(result != null).isTrue()
     }
-
 }
