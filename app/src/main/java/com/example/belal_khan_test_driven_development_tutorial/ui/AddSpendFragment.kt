@@ -37,6 +37,6 @@ class AddSpendFragment : BaseFragment(R.layout.fragment_add_spend) {
     private fun addSpend() {
         viewModel.addSpend(amount, description)
         binding.textViewSuccessMessage.text = "Spend successfully added"
-//        findNavController().navigateUp()
+        findNavController().navigateUp()
     }
 }

@@ -5,6 +5,9 @@
       <entry key="AddSpendFragmentTest">
         <State />
       </entry>
+      <entry key="MainActivityTest">
+        <State />
+      </entry>
       <entry key="SpendsDatabaseTest">
         <State />
       </entry>
