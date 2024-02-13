@@ -4,12 +4,9 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.belal_khan_test_driven_development_tutorial.R
 import com.example.belal_khan_test_driven_development_tutorial.databinding.FragmentAddSpendBinding
-
 
 class AddSpendFragment : BaseFragment(R.layout.fragment_add_spend) {
 
@@ -39,6 +36,7 @@ class AddSpendFragment : BaseFragment(R.layout.fragment_add_spend) {
     @SuppressLint("SetTextI18n")
     private fun addSpend() {
         viewModel.addSpend(amount, description)
-        findNavController().navigateUp()
+        binding.textViewSuccessMessage.text = "Spend successfully added"
+//        findNavController().navigateUp()
     }
 }
